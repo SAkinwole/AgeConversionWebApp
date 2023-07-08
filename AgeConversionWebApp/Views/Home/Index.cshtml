@@ -2,32 +2,33 @@
     ViewData["Title"] = "Age Calculator";
 }
 
-<h1>Find Your Age</h1>
 
-<form method="post">
-    <div>
-        <label for="day">Day:</label>
-        <input type="number" id="day" name="day" required>
-    </div>
+<div class="text-center">
+    <h1 class="display-4">Find Your Age</h1>
 
-    <div>
-        <label for="month">Month:</label>
-        <input type="number" id="month" name="month" required>
-    </div>
+    <div class="row">
+        <div class="col-5">
+            <form form asp-controller="Home" asp-action="CalculateAge" method="POST">
 
-    <div>
-        <label for="year">Year:</label>
-        <input type="number" id="year" name="year" required>
-    </div>
+                <input type="number" name="day" class="form-control mt-3" placeholder="Day">
 
-    <div>
-        <button type="submit">Calculate Age</button>
-    </div>
-</form>
+                <input type="number" name="month" class="form-control mt-3" placeholder="Month">
 
-@if (ViewBag.Age != null)
-{
-    <div>
-        <h2>Your current age is: @ViewBag.Age</h2>
+                <input type="number" name="Year" class="form-control mt-3" placeholder="Year">
+                
+                <button type="submit" class="btn btn-primary mt-3">Click to see the Age</button>
+            </form>
+        </div>
+        
+        @if (ViewBag.Age != null)
+        {
+            <div>
+                <h2>Your current age is: @ViewBag.Age</h2>
+            </div>
+        }
+        @if (ViewBag.ErrorMessage != null)
+        {
+                    <p class="text-danger">Error: @ViewBag.ErrorMessage</p>
+        }
     </div>
-}
+</div>
